@@ -18,7 +18,7 @@ app.get('/',function(peticion,respuesta){
 
 io.sockets.on('connection' ,function(socket){
 	socket.on('sendMessage' , function(data){
-		io.sockets.emit('newMessage', data);
+		io.sockets.emit('newMessage', {msg:data, nombre:socket.nombre_usuario});
 	});
 
 	socket.on("newUser", function(data, callback){
@@ -47,87 +47,6 @@ io.sockets.on('connection' ,function(socket){
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//COPIA DE SEGURIDAD
-/*io.on('connection' , function(socket){
-	console.log('New user connected');
-
-	socket.on('disconnect', function(){
-    	console.log('The user has gone'); 
-    });
-
-    socket.on('chat message', function(msg){
-    	console.log('message: ' + msg);
-    	io.emit('chat message', msg); 
-    });
-
-	
-
-	var delivery = dl.listen(socket);
-		delivery.on('receive.success',function(file){
-	    	var params = file.params;
-	    	fs.writeFile(path.normalize(__dirname + "/../public/" + file.name),file.buffer, function(err){
-		      	if(err){
-		        	console.log('File could not be saved.');
-		      	}
-
-		      	else{
-		        	console.log('File saved.');
-		      	};
-	    	});
-	  	});
-*/
-/*
-	delivery.on('delivery.connect',function(delivery){
-	 
-	    delivery.send({
-	      name: 'sample-image.jpg',
-	      path : './sample-image.jpg',
-	      params: {foo: 'bar'}
-	    });
-	 
-	    delivery.on('send.success',function(file){
-	      console.log('File successfully sent to client!');
-	    });
-	 
-	});
-
-	fs.writeFile(file.name, file.buffer, function(err){
-	    if(err){
-	        console.log('File could not be saved: ' + err);
-	    }
-	    else{
-	        console.log('File ' + file.name + " saved");
-	    };
-	});
-
-
-});
-*/
 
 http.listen(port,function(){
 	console.log("OK. Aplicacion escuchando en puerto 3000");

@@ -17,109 +17,48 @@
 
 
 		<script>
-        var socket = io.connect();
+            var socket = io.connect();
 
-        $(document).ready(function(){
+            $(function(){
 
-            $('#enviarNombre').click(function(){
-                
-                socket.emit('newUser', $('#enviarNombre').val(), function(data){
-                    if(data){
-                        $('#nombres_contactos').hide();
-                        $('#whatsapp').show();
-                    }
-                    else{
-                        $('#login-error').show();
-                    }
-                
-                });
-            });
-
-            $('form').submit(function(){
-                if ($('#m').val().trim()!=''){
-                    socket.emit('sendMessage' , $('#m').val());
-                    $('#m').val('');
-                    return false;
-                }
-            });
-
-            socket.on('newMessage' , function(data){
-                $('#messages').append('<p>' + data.msg);
-            })
-
-            socket.on('Usuarios', function(data){
-                var users = "";
-                for (var a in data){
-                    users += a;
-                }
-
-               $('.usuarios_conectados').html("<p><img id='fotoPersonal' src='./persona.png'>" +  users + "</p>");
-            })
-
-
-
-            //COPIA DE SEGURIDAD
-/*            $('form').submit(function(){
-                if ($('#m').val().trim()!='') socket.emit('chat message', $('#m').val());
-                $('#m').val('');
-                return false;
-                });
-              
-                socket.on('chat message', function(msg){
-                    $('#messages').append($('<li id="emisor">').text(msg));
-                
-            });
-
-          
-          socket.on('connect', function(){
-                var delivery = new Delivery(socket);
-             
-                delivery.on('delivery.connect',function(delivery){
-                    $("input[type=submit]").click(function(evt){
-
-                        var file = $("input[type=file]")[0].files[0];
-                        var extraParams = {foo: 'bar'};
-                        delivery.send(file, extraParams);
-                        evt.preventDefault();
+                $('#enviarNombre').click(function(e){
+                    e.preventDefault();
+                    socket.emit('newUser', $('#nombre_contacto').val(), function(data){
+                        if(data){
+                            $('#nombres_contactos').hide();
+                            $('#whatsapp').show();
+                            $('#login-error').hide();
+                        }
+                        else{
+                            $('#login-error').show();
+                        }
+                    
                     });
                 });
-             
-                delivery.on('send.success',function(fileUID){
-                    console.log("file was successfully sent.");
-                });
-                
-                delivery.on('receive.start',function(fileUID){
-                    console.log('receiving a file!');
-                });
-                 
-                delivery.on('receive.success',function(file){
-                    var params = file.params;
-                    if (file.isImage()) {
-                        $('img').attr('src', file.dataURL());
-                    };
-                });*/
 
-
-
-/*                delivery.on('receive.success',function(file){
-            
-                    fs.writeFile(file.name, file.buffer, function(err){
-                      if(err){
-                        console.log('File could not be saved: ' + err);
+                $('form').submit(function(){
+                    if ($('#m').val().trim()!=''){
+                        socket.emit('sendMessage' , $('#m').val());
+                        $('#m').val('');
+                        return false;
                     }
-
-                    else{
-                        console.log('File ' + file.name + " saved");
-                    };
                 });
+
+                socket.on('newMessage' , function(data){
+                    $('#messages').append('<p>' + data.nombre + " - " +  data.msg);
+                })
+
+                socket.on('Usuarios', function(data){
+                    var users = "";
+                    for (var a in data){
+                        users += a;
+
+                    }
+                    $('.usuarios_conectados').html("");
+                   $('.usuarios_conectados').append("<p><img id='fotoPersonal' src='./persona.png'>" +  users + "</p>");
+                })
+
             });
-
-        */
-
-
-        });
-
-
 
         </script>
 	</head>
@@ -133,7 +72,7 @@
 			</div>
             
             <div class="input-group" id="nombres_contactos">
-                <input type="text" id="nombre_contacto" class="form-control input-lg" placeholder="Enter your name" />
+                <input type="text" id="nombre_contacto" class="form-control input-lg" placeholder="Enter your name">
                 <span class="input-group-btn">
                     <button class="btn btn-lg btn-success" type="sumbit" id="enviarNombre">Send</button>
                 </span>
@@ -190,7 +129,6 @@
                             <form>
                                 <input id="m" placeholder="Escribe un mensaje aquí" /><button id="button">Send</button>
 
-<!--                                 <input type="file"><button type="sumbit" class="envio">Send file</button> -->
                             </form>
 						</div>
 					</div>
