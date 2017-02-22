@@ -59,11 +59,11 @@ li{
 	padding: 5px;
 }
 
-input.form-control{
+#m.form-control{
   margin-bottom: 15px;
 }
 
-form { 
+#inputWhatsapp { 
   position: absolute; 
   bottom: 0; 
   margin-right: 0px;
@@ -71,7 +71,7 @@ form {
   padding: 10px;
 }
 
-form input { 
+#inputWhatsapp input { 
 
   border: 0; 
   padding: 10px; 
@@ -79,7 +79,7 @@ form input {
 
 }
 
-form button { 
+#inputWhatsapp button { 
 
   width: 10%; 
   background: #D3D3D3; 
@@ -145,3 +145,50 @@ p:hover{
   background-color:#E9EBEB;
 }
 
+/*BOCADILLO WHATSAPP*/
+
+
+.arrow_box {
+  margin:7px;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  padding: 10px;
+  margin-left: 20px;
+  /*display: inline-block;*/
+}
+
+.arrow_box:after, .arrow_box:before {
+  left:-15px;
+  margin-left: 10px;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+}
+
+.arrow_box:before {
+  border-right-color: #FFFFFF;
+  border-width: 13px;
+  margin-top: 3px;
+}
+
+.nick{
+  color:red;
+}
+
+.modal-body .form-horizontal .col-sm-2,
+.modal-body .form-horizontal .col-sm-10 {
+    width: 100%
+}
+
+.modal-body .form-horizontal .control-label {
+    text-align: left;
+}
+.modal-body .form-horizontal .col-sm-offset-2 {
+    margin-left: 15px;
+}
+
+.modal-backdrop.in{
+  opacity: 0;
+}
