@@ -5,28 +5,28 @@ html, body{
     padding: 0;
     margin: 0;
 /*    background-image: url(./portada.png);
-    background-size: cover;
-    background-repeat: no-repeat;*/
+background-size: cover;
+background-repeat: no-repeat;*/
 }
 
 #whatsapp{
-  display: none;
+    display: none;
 }
 #contenedor1{
-	    background-color: #D8DBD6;
+    background-color: #D8DBD6;
 
 }
 .container{
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 #contenedor2{
-	height: 500px;
-	background-image:url(./fondo.jpg);
-	background-repeat: no-repeat;
-	background-size: cover;
-  overflow: auto;
+    height: 500px;
+    background-image:url(./fondo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: auto;
 }
 
 #cabecera{
@@ -37,147 +37,147 @@ html, body{
 }
 
 #fotoPersonal{
-	max-width: 30px;
-	max-height: 30px;
-  margin-right: 8px;
+    max-width: 30px;
+    max-height: 30px;
+    margin-right: 8px;
 }
 
 #datos{
-	padding: 0px;
-  margin-bottom: 3px;
+    padding: 0px;
+    margin-bottom: 3px;
 }
 
 #contactos{
-	border:1px solid #eee;
-  height: 540px;
-  overflow: auto;
+    border:1px solid #eee;
+    height: 540px;
+    overflow: auto;
 }
 
 #search{
-	width: 100%;
+    width: 100%;
 }
 
 li{
-	list-style: none;
-	text-decoration: none;
-	padding: 5px;
+    list-style: none;
+    text-decoration: none;
+    padding: 5px;
 }
 
 #m.form-control{
-  margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 #inputWhatsapp { 
 
-  bottom: 0; 
-  margin-right: 0px;
-  width: 100%; 
+    bottom: 0; 
+    margin-right: 0px;
+    width: 100%; 
 }
 
 #inputWhatsapp input { 
 
-  border: 0; 
-  padding: 10px; 
-  width: 90%; 
+    border: 0; 
+    padding: 10px; 
+    width: 90%; 
 
 }
 
 #inputWhatsapp button { 
 
-  width: 10%; 
-  background: #D3D3D3; 
-  border: none; 
-  padding: 10px; 
+    width: 10%; 
+    background: #D3D3D3; 
+    border: none; 
+    padding: 10px; 
 }
 
 #messages { 
-  list-style-type: none; 
-  margin: 0; 
-  padding: 0; 
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
 
 }
 
 #messages li { 
-  padding: 5px 10px; 
+    padding: 5px 10px; 
 
 }
 
 #messages li:nth-child(odd) { 
-  background: #eee; 
+    background: #eee; 
 }
 
 li#emisor{
-  width: auto;
-  padding: 10px;
-/*  display: inline;*/
-/*  float: left;*/
-  margin-left: 5%;
-  margin-top: 2%;
+    width: auto;
+    padding: 10px;
+    /*  display: inline;*/
+    /*  float: left;*/
+    margin-left: 5%;
+    margin-top: 2%;
 }
 
 #messages li:nth-child(odd){
-  background-color:white;
+    background-color:white;
 }
 
 .cabeceraContacto{
-  background-color: #EEEEEE;
-  padding:10px;
+    background-color: #EEEEEE;
+    padding:10px;
 }
 
 .cabeceraPersonal{
-  background-color: #EEEEEE;
-  padding:10px;
-  border-right:1px solid #A9A9A9;
+    background-color: #EEEEEE;
+    padding:10px;
+    border-right:1px solid #A9A9A9;
 }
 
 p{
-  padding: 5px;
+    padding: 5px;
 
 
 }
 
 p:hover{
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .col-md-3 {
-  padding:0;
+    padding:0;
 }
 
 .active{
-  background-color:#E9EBEB;
+    background-color:#E9EBEB;
 }
 
 /*BOCADILLO WHATSAPP*/
 
 
 .arrow_box {
-  margin:7px;
-  border-radius: 5px;
-  background-color: #FFFFFF;
-  padding: 10px;
-  margin-left: 20px;
-  /*display: inline-block;*/
+    margin:7px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    padding: 10px;
+    margin-left: 20px;
+    /*display: inline-block;*/
 }
 
 .arrow_box:after, .arrow_box:before {
-  left:-15px;
-  margin-left: 10px;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
+    left:-15px;
+    margin-left: 10px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
 }
 
 .arrow_box:before {
-  border-right-color: #FFFFFF;
-  border-width: 13px;
-  margin-top: 15px;
+    border-right-color: #FFFFFF;
+    border-width: 13px;
+    margin-top: 15px;
 }
 
 .nick{
-  color:red;
+    color:red;
 }
 
 .modal-body .form-horizontal .col-sm-2,
@@ -193,7 +193,7 @@ p:hover{
 }
 
 .modal-backdrop.in{
-  opacity: 0;
+    opacity: 0;
 }
 
 .btn-primary {
@@ -210,4 +210,22 @@ p:hover{
     border-color: green;
     float: right;
     margin-top: -5%;
+}
+
+
+.typing{
+    margin: 1% 30%;
+    width: 300px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12.5px;
+    line-height: 21px;
+    /*display: inline-block;*/
+    /*margin:7px;*/
+    border-radius: 7.5px;
+    color: rgba(0,0,0,0.95);
+    text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+    background-color: rgba(255,245,196,0.95);
+    padding: 5px 12px 6px 12px;
+    box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
+    text-align: center;
 }

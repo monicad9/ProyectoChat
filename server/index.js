@@ -17,7 +17,10 @@ app.get('/',function(peticion,respuesta){
 });
 
 io.sockets.on('connection' ,function(socket){
+	
+
 	socket.on('sendMessage' , function(data){
+
 		io.sockets.emit('newMessage', {msg:data, nombre:socket.nombre_usuario});
 	});
 
@@ -31,13 +34,16 @@ io.sockets.on('connection' ,function(socket){
 			socket.nombre_usuario = data;
 			nombres_usuarios[socket.nombre_usuario] = 1;
 			actualizar_usuarios();
+			io.sockets.emit('user_connected', {msg:data, nombre:socket.nombre_usuario} );
 		}
 	})
 
 	socket.on('disconnect', function(data){
+		io.sockets.emit('user_disconnect', {msg:data, nombre:socket.nombre_usuario});
 		if (socket.nombre_usuario){
 			delete nombres_usuarios[socket.nombre_usuario];
 			actualizar_usuarios();
+			
 		}
 	});
 

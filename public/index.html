@@ -18,15 +18,18 @@
 
 		<script>
             var socket = io.connect();
+            var cont = "";
 
             $(function(){
 
-/*                $('#enviarNombre').keypress(function(e) {
-                    if (e.which == 13) {
-                        return false;
-                    }
-                });*/
+/*                function typing(){
+                    $('#inputWhatsapp').keypress(function(){
+                        $('#messages').append("<div class='typing'>somebody is writting</div>");
+                    animateScroll();
+                    });
+                }
 
+                setTimeout(typing, 2000);*/
 
 
                 function animateScroll(){
@@ -44,7 +47,7 @@
                             $('#login-error').hide();
                             $('.login').hide();
                             $('#whatsapp').show();
-                            $('.cabeceraPersonal').append("<img id='fotoPersonal' src='./persona.png'>" + $('#nombre_contacto').val())
+                            $('.cabeceraPersonal').append("<img id='fotoPersonal' src='./persona.png'><h3>" + $('#nombre_contacto').val()) 
                         }
                         else{
                             $('#login-error').show();
@@ -70,16 +73,25 @@
                 })
 
                 socket.on('Usuarios', function(data){
-                    var users = "";
+                    $('.usuarios_conectados').html("");
+                    cont += 1;
                     for (var a in data){
-                        users += a;
+                        $('.usuarios_conectados').append("<div class=" + cont + "><img id='fotoPersonal' src='./persona.png'>" +  a + "</div>");
+
 
                     }
 
-                    $('.usuarios_conectados').html("");
-                    $('.usuarios_conectados').append("<div class='cont'><img id='fotoPersonal' src='./persona.png'>" +  users + "</div>");
                 })
 
+                socket.on('user_disconnect',function(data){
+                    $('#messages').append("<div class='typing'> " + data.nombre + " ha abandonado el chat</div>");
+
+                })
+
+                socket.on('user_connected',function(data){
+                    $('#messages').append("<div class='typing'>" + data.nombre + " ha entrado en el chat</div>");
+
+                })
             });
 
         </script>
