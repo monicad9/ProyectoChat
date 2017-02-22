@@ -21,15 +21,30 @@
 
             $(function(){
 
-                $('#enviarNombre').click(function(e){
-                    e.preventDefault();
+/*                $('#enviarNombre').keypress(function(e) {
+                    if (e.which == 13) {
+                        return false;
+                    }
+                });*/
+
+
+
+                function animateScroll(){
+                    var container = $('#contenedor2');
+                    container.animate({"scrollTop": container[0].scrollHeight}, "slow");
+                }
+
+                $('#enviarNombre').click(function(){
+                    
                     socket.emit('newUser', $('#nombre_contacto').val(), function(data){
                         if(data){
+                            $('body').css('background-color','white')
                             $('#nombres_contactos').hide();
                             $('.modal-backdrop').hide();
-                            $('#whatsapp').show();
                             $('#login-error').hide();
                             $('.login').hide();
+                            $('#whatsapp').show();
+                            $('.cabeceraPersonal').append("<img id='fotoPersonal' src='./persona.png'>" + $('#nombre_contacto').val())
                         }
                         else{
                             $('#login-error').show();
@@ -39,7 +54,8 @@
                     });
                 });
 
-                $('form').submit(function(){
+                $('form').submit(function(e){
+                    e.preventDefault();
                     if ($('#m').val().trim()!=''){
                         socket.emit('sendMessage' , $('#m').val());
                         $('#m').val('');
@@ -48,7 +64,9 @@
                 });
 
                 socket.on('newMessage' , function(data){
+                    
                     $('#messages').append('<div class="arrow_box"><div class="nick">' + data.nombre + "</div>" +  data.msg + "</div>");
+                    animateScroll();
                 })
 
                 socket.on('Usuarios', function(data){
@@ -59,7 +77,7 @@
                     }
 
                     $('.usuarios_conectados').html("");
-                    $('.usuarios_conectados').append("<p><img id='fotoPersonal' src='./persona.png'>" +  users + "</p>");
+                    $('.usuarios_conectados').append("<div class='cont'><img id='fotoPersonal' src='./persona.png'>" +  users + "</div>");
                 })
 
             });
@@ -71,14 +89,18 @@
 
 		<div class="container">
 
-			<div class="row">
+            <!-- Pantalla principal -->
+
+			
 				<div class="col-md-12 col-lg-12 col-xs-12" id="cabecera"></div>
-			</div>
+			
+            <!-- ************* -->
+
 
             <button class="btn btn-primary btn-lg login" data-toggle="modal" data-target="#nombres_contactos">Entrar</button>
 
             <!-- Modal -->
-            <div class="modal fade" id="nombres_contactos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal fade"  data-backdrop="static" data-keyboard="false"  id="nombres_contactos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <!-- Modal Header -->
@@ -99,7 +121,7 @@
                               <div class="form-group">
                                 <label  class="col-sm-2 control-label" for="nombre_contacto">Nombre</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="nombre_contacto" placeholder="Introduce tu nombre"/>
+                                    <input type="text" class="form-control" id="nombre_contacto" autocomplete="off" placeholder="Introduce tu nombre"/>
                                 </div>
                               </div>
                        
@@ -114,35 +136,32 @@
                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                             Lo siento, ese usuario ha sido registrado previamente. Pruebe con otro nombre.
                                         </div>
-                            <button class="btn btn-lg btn-success" type="sumbit" id="enviarNombre">Send</button>
+                            <button type="button" class="btn btn-lg btn-success" id="enviarNombre">Send</button>
                         </div>
                     </div>
                 </div>
             </div>
 
+        <!-- ************************************** -->
+
+        <!-- Pantalla de whatsapp -->
 
 			<div class="row" id="whatsapp"> 
 				
-
+                <!-- Lateral izquierdo -->
 				<div class="col-md-3 col-lg-3 col-sm-3 col-xs-3" id="contactos">
 
-
+                    <!-- Cabecera de usuario -->
 					<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="datos">
 						<div class="cabeceraPersonal">
                             
-                            <img id="fotoPersonal" src="./persona.png"> Mónica
+                           <!--  <img id="fotoPersonal" src="./persona.png"> Mónica -->
                                     
                         </div>
                    
 					</div>
 
-<!-- 					<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="search">
-						<div class="left-inner-addon">
-							<input type="text" class="form-control" placeholder= "Search a contact">
-						</div>
-
-					</div> -->
-
+                    <!-- Usuarios conectados, foto incluida -->
 					<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12 usuarios_conectados">
 						<p class="active"><img id="fotoPersonal" src="./persona.png"> Chat grupo</p>
 						<p> <img id="fotoPersonal" src="./persona.png"> Persona 2</p>
@@ -151,6 +170,7 @@
 
 				</div>
 
+                <!-- Lateral derecho. Conversación -->
 
 				<div class="col-md-9 col-lg-9 col-sm-9 col-xs-9">
 
@@ -158,22 +178,35 @@
 
 						<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="contenedor2">
                             <div class="row">
+
+                                <!-- Usuario con el que se mantiene la conversación -->
                                 <div class="cabeceraContacto">
                                     <img id="fotoPersonal" src="./persona.png">Chat grupo
                                     
                                </div>
                                 <span id="messages"></span>
+<!--                                 <form id="inputWhatsapp">
+                                    <input id="m" placeholder="Escribe un mensaje aquí" /><button id="button">Send</button>
+
+                                </form> -->
+						    </div>
+
+
+
+					   </div>
+
                             <form id="inputWhatsapp">
-                                <input id="m" placeholder="Escribe un mensaje aquí" /><button id="button">Send</button>
+                                <input id="m" autocomplete="off" placeholder="Escribe un mensaje aquí" /><button id="button">Send</button>
 
                             </form>
-						</div>
-					</div>
-				</div>
+				    </div>
 
-			</div>
+			    </div>
 
-		</div>
+		     </div>
+        </div>
+
+
 
 	</body>
 </html>

@@ -4,6 +4,9 @@ html, body{
     width: 100%;
     padding: 0;
     margin: 0;
+/*    background-image: url(./portada.png);
+    background-size: cover;
+    background-repeat: no-repeat;*/
 }
 
 #whatsapp{
@@ -13,10 +16,10 @@ html, body{
 	    background-color: #D8DBD6;
 
 }
-/*.container{
+.container{
   width: 100%;
   height: 100%;
-}*/
+}
 
 #contenedor2{
 	height: 500px;
@@ -46,7 +49,8 @@ html, body{
 
 #contactos{
 	border:1px solid #eee;
-  height: 500px;
+  height: 540px;
+  overflow: auto;
 }
 
 #search{
@@ -64,11 +68,10 @@ li{
 }
 
 #inputWhatsapp { 
-  position: absolute; 
+
   bottom: 0; 
   margin-right: 0px;
   width: 100%; 
-  padding: 10px;
 }
 
 #inputWhatsapp input { 
@@ -170,7 +173,7 @@ p:hover{
 .arrow_box:before {
   border-right-color: #FFFFFF;
   border-width: 13px;
-  margin-top: 3px;
+  margin-top: 15px;
 }
 
 .nick{
@@ -191,4 +194,20 @@ p:hover{
 
 .modal-backdrop.in{
   opacity: 0;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #03C03C;
+    border-color: #03C03C;
+    float: right;
+    margin-top: -5%;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: green;
+    border-color: green;
+    float: right;
+    margin-top: -5%;
 }
