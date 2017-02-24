@@ -32,9 +32,9 @@ io.sockets.on('connection' ,function(socket){
 		else{
 			callback(true);
 			socket.nombre_usuario = data;
+			io.sockets.emit('user_connected', {msg:data, nombre:socket.nombre_usuario} );
 			nombres_usuarios[socket.nombre_usuario] = 1;
 			actualizar_usuarios();
-			io.sockets.emit('user_connected', {msg:data, nombre:socket.nombre_usuario} );
 		}
 	})
 
@@ -46,6 +46,14 @@ io.sockets.on('connection' ,function(socket){
 			
 		}
 	});
+
+	socket.on('writing' , function(data){
+		socket.broadcast.emit('typing', {msg:data, nombre:socket.nombre_usuario});
+	})
+
+	socket.on('stopWriting' ,function(data){
+		socket.broadcast.emit('noTyping');
+	})
 
 	function actualizar_usuarios(){
 		io.sockets.emit('Usuarios', nombres_usuarios);

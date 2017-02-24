@@ -23,7 +23,7 @@ background-repeat: no-repeat;*/
 
 #contenedor2{
     height: 500px;
-    background-image:url(./fondo.jpg);
+    background-image:url(./imagenes/fondo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     overflow: auto;
@@ -37,9 +37,11 @@ background-repeat: no-repeat;*/
 }
 
 #fotoPersonal{
-    max-width: 30px;
-    max-height: 30px;
+    max-width: 40px;
+    max-height: 40px;
     margin-right: 8px;
+    border: 1px solid black;
+    border-radius: 22px;
 }
 
 #datos{
@@ -50,7 +52,8 @@ background-repeat: no-repeat;*/
 #contactos{
     border:1px solid #eee;
     height: 540px;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 #search{
@@ -71,7 +74,7 @@ li{
 
     bottom: 0; 
     margin-right: 0px;
-    width: 100%; 
+    width: 100%;
 }
 
 #inputWhatsapp input { 
@@ -79,6 +82,8 @@ li{
     border: 0; 
     padding: 10px; 
     width: 90%; 
+    overflow-y: auto;
+    overflow-x: hidden;
 
 }
 
@@ -151,16 +156,19 @@ p:hover{
 /*BOCADILLO WHATSAPP*/
 
 
-.arrow_box {
+.texto {
     margin:7px;
     border-radius: 5px;
     background-color: #FFFFFF;
-    padding: 10px;
     margin-left: 20px;
-    /*display: inline-block;*/
+    width: 450px;
+    overflow-x: hidden;
+    padding: 6px 0 8px 0;
+    padding-left: 9px;
+    padding-right: 7px;
 }
 
-.arrow_box:after, .arrow_box:before {
+.texto:after, .texto:before {
     left:-15px;
     margin-left: 10px;
     border: solid transparent;
@@ -170,10 +178,11 @@ p:hover{
     position: absolute;
 }
 
-.arrow_box:before {
+.texto:before {
     border-right-color: #FFFFFF;
     border-width: 13px;
     margin-top: 15px;
+
 }
 
 .nick{
@@ -213,7 +222,7 @@ p:hover{
 }
 
 
-.typing{
+.connected{
     margin: 1% 30%;
     width: 300px;
     font-family: 'Open Sans', sans-serif;
@@ -227,5 +236,54 @@ p:hover{
     background-color: rgba(255,245,196,0.95);
     padding: 5px 12px 6px 12px;
     box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
+    text-align: center;
+}
+
+.disconnected{
+    margin: 1% 30%;
+    width: 300px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12.5px;
+    line-height: 21px;
+    /*display: inline-block;*/
+    /*margin:7px;*/
+    border-radius: 7.5px;
+    color: rgba(0,0,0,0.95);
+    text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+    background-color: rgba(255,245,196,0.95);
+    padding: 5px 12px 6px 12px;
+    box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
+    text-align: center;
+}
+
+.typing{
+    float: right;
+    display: inline-block;
+    margin-top: 1.8vh;
+}
+
+.cont_connected{
+    margin:8px;
+    border-top:1px solid #f2f2f2;
+}
+
+.cont_connected:hover{
+    border:1px solid orange;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 5px 5px 5px #DBDDDC;
+}
+
+.mensajeinput{    
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#avatar img{
+    max-width: 100px;
+    max-height: 100px;
+}
+
+#avatar{
     text-align: center;
 }
