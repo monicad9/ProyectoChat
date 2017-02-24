@@ -40,39 +40,29 @@ $(function(){
     }
 
     $('#enviarNombre').click(function(){
-        
-        socket.emit('newUser', $('#nombre_contacto').val(), function(data){
-            if(data){
-                $('body').css('background-color','white')
-                $('#nombres_contactos').hide();
-                $('.modal-backdrop').hide();
-                $('#login-error').hide();
-                $('.login').hide();
-                $('#whatsapp').show();
-                $('.cabeceraPersonal').append("<img id='fotoPersonal' src='./imagenes/persona.png'><h3>" + $('#nombre_contacto').val()) 
-            }
-            else{
-                $('#login-error').show();
+      
+        if ($('#nombre_contacto').val()!= ""){
+            socket.emit('newUser', $('#nombre_contacto').val(), function(data){
+                if(data){
+                    $('body').css('background-color','white')
+                    $('#nombres_contactos').hide();
+                    $('.modal-backdrop').hide();
+                    $('#login-error').hide();
+                    $('.login').hide();
+                    $('#whatsapp').show();
 
-            }
+                    var img= $('input:radio[name=av_select]:checked').val();
 
-
-/*            var selected = '';    
-            $('#formid input[type=checkbox]').each(function(){
-                if (this.checked) {
-                    selected += $(this).val()+', ';
+                    $('.cabeceraPersonal').append("<img id='fotoPersonal' src='" + img + "'>" + $('#nombre_contacto').val()) 
                 }
-            }); 
+                
+                else{
+                    $('#login-error').show();
 
-            if (selected != '') 
-                alert('Has seleccionado: '+selected);  
-            else
-                alert('Debes seleccionar al menos una opción.');
+                }
 
-            return false;
-       */
-
-        });
+            });
+        }
     });
 
     $('form').submit(function(e){
