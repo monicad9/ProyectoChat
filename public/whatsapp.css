@@ -26,7 +26,7 @@ background-repeat: no-repeat;*/
     background-image:url(./imagenes/fondo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    overflow: auto;
+
 }
 
 #cabecera{
@@ -77,13 +77,14 @@ li{
     width: 100%;
 }
 
-#inputWhatsapp input { 
+#inputWhatsapp textarea { 
 
     border: 0; 
     padding: 10px; 
     width: 90%; 
-    overflow-y: auto;
-    overflow-x: hidden;
+    resize: none;
+    height: 40px;
+    float: left;
 
 }
 
@@ -99,8 +100,14 @@ li{
     list-style-type: none; 
     margin: 0; 
     padding: 0; 
-
 }
+
+#cont_messages{
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 420px;
+}
+
 
 #messages li { 
     padding: 5px 10px; 
@@ -137,6 +144,7 @@ li#emisor{
 
 p{
     padding: 5px;
+    word-wrap: break-word;
 
 
 }
@@ -168,7 +176,7 @@ p:hover{
     padding-right: 7px;
 }
 
-.texto:after, .texto:before {
+/*.texto:after, .texto:before {
     left:-15px;
     margin-left: 10px;
     border: solid transparent;
@@ -183,7 +191,7 @@ p:hover{
     border-width: 13px;
     margin-top: 15px;
 
-}
+}*/
 
 .nick{
     color:red;

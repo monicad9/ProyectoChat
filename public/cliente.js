@@ -35,7 +35,7 @@ $(function(){
     })
 
     function animateScroll(){
-        var container = $('#contenedor2');
+        var container = $('#cont_messages');
         container.animate({"scrollTop": container[0].scrollHeight}, "slow");
     }
 
@@ -53,8 +53,11 @@ $(function(){
 
                     var img= $('input:radio[name=av_select]:checked').val();
 
-                    $('.cabeceraPersonal').append("<img id='fotoPersonal' src='" + img + "'>" + $('#nombre_contacto').val()) 
-                }
+                    if (img != undefined){
+                        $('.cabeceraPersonal').append("<img id='fotoPersonal' src='" + img + "'>" + $('#nombre_contacto').val()) 
+                    }
+                    
+                }   
                 
                 else{
                     $('#login-error').show();
@@ -63,6 +66,19 @@ $(function(){
 
             });
         }
+    });
+
+    $('.messageTextarea').keydown(function(event) {
+    if (event.keyCode == 13) {
+        event.preventDefault();
+        if ($('#m').val().trim()!=''){
+            socket.emit('sendMessage' , $('#m').val());
+            $('#m').val('');
+            return false;
+        }
+        
+        
+     }
     });
 
     $('form').submit(function(e){

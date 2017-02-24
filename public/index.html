@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>WhatsChat</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1"></head>
+    <head>
+        <title>WhatsChat</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></head>
 
         <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
         
@@ -13,21 +13,21 @@
         
         <script src="./delivery.js"></script>
         <link rel="stylesheet" type="text/css" href="./whatsapp.css">
-		
+        
         <script src = "./cliente.js"></script>
 
         
-	</head>
+    </head>
 
-	<body>
+    <body>
 
-		<div class="container">
+        <div class="container">
 
             <!-- Pantalla principal -->
 
-			
-				<div class="col-md-12 col-lg-12 col-xs-12" id="cabecera"></div>
-			
+            
+                <div class="col-md-12 col-lg-12 col-xs-12" id="cabecera"></div>
+            
             <!-- ************* -->
 
 
@@ -94,35 +94,35 @@
 
         <!-- Pantalla de whatsapp -->
 
-			<div class="row" id="whatsapp"> 
-				
+            <div class="row" id="whatsapp"> 
+                
                 <!-- Lateral izquierdo -->
-				<div class="col-md-3 col-lg-3 col-sm-3 col-xs-3" id="contactos">
+                <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3" id="contactos">
 
                     <!-- Cabecera de usuario -->
-					<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="datos">
-						<div class="cabeceraPersonal">
+                    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="datos">
+                        <div class="cabeceraPersonal">
                             
                                     
                         </div>
                    
-					</div>
+                    </div>
 
                     <!-- Usuarios conectados, foto incluida -->
-					<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12 usuarios_conectados">
+                    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12 usuarios_conectados">
 
 
-					</div>
+                    </div>
 
-				</div>
+                </div>
 
                 <!-- Lateral derecho. Conversación -->
 
-				<div class="col-md-9 col-lg-9 col-sm-9 col-xs-9">
+                <div class="col-md-9 col-lg-9 col-sm-9 col-xs-9">
 
-					<div class="row">
+                    <div class="row">
 
-						<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="contenedor2">
+                        <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="contenedor2">
                             <div class="row">
 
                                 <!-- Usuario con el que se mantiene la conversación -->
@@ -132,35 +132,34 @@
 
                                     
                                </div>
-
-                                <div id="messages"></div>
-                                    <div class="arrow_box">
-
-                                    </div>
+                                <div id="cont_messages">
+                                    <div id="messages"></div>
+                                    <div class="arrow_box"></div>
+                                </div>
 <!--                                 <form id="inputWhatsapp">
                                     <input id="m" placeholder="Escribe un mensaje aquí" /><button id="button">Send</button>
 
                                 </form> -->
-						    </div>
+                            </div>
 
                         
 
-					   </div>
+                       </div>
                             
                             <form id="inputWhatsapp">
                                 
-                                    <input id="m" contenteditable="true" autocomplete="off" placeholder="Escribe un mensaje aquí" /><button id="button">Send</button>
+                                    <textarea class="messageTextarea" id="m" autocomplete="off" placeholder="Escribe un mensaje aquí"></textarea><button id="button">Send</button>
                                 
 
                             </form>
-				    </div>
+                    </div>
 
-			    </div>
+                </div>
 
-		     </div>
+             </div>
         </div>
 
 
 
-	</body>
+    </body>
 </html>
