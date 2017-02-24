@@ -295,3 +295,7 @@ p:hover{
 #avatar{
     text-align: center;
 }
+
+#login-error, #login-error2, #login-error3{
+    text-align: center;
+}

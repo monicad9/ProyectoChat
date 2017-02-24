@@ -42,30 +42,36 @@ $(function(){
     $('#enviarNombre').click(function(){
       
         if ($('#nombre_contacto').val()!= ""){
-            socket.emit('newUser', $('#nombre_contacto').val(), function(data){
-                if(data){
-                    $('body').css('background-color','white')
-                    $('#nombres_contactos').hide();
-                    $('.modal-backdrop').hide();
-                    $('#login-error').hide();
-                    $('.login').hide();
-                    $('#whatsapp').show();
+            if ($('input:radio[name="av_select"]').is(':checked')){
+                socket.emit('newUser', $('#nombre_contacto').val(), function(data){
+                    if(data){
+                        $('body').css('background-color','white')
+                        $('#nombres_contactos').hide();
+                        $('.modal-backdrop').hide();
+                        $('#login-error').hide();
+                        $('.login').hide();
+                        $('#whatsapp').show();
 
-                    var img= $('input:radio[name=av_select]:checked').val();
-
-                    if (img != undefined){
+                        var img= $('input:radio[name=av_select]:checked').val();
                         $('.cabeceraPersonal').append("<img id='fotoPersonal' src='" + img + "'>" + $('#nombre_contacto').val()) 
                     }
-                    
-                }   
-                
-                else{
-                    $('#login-error').show();
+                    else{
+                        $('#login-error').show();
 
-                }
+                    }                             
+                });
+            }
 
-            });
+            else{
+              $('#login-error2').show();  
+            }
         }
+        
+        else{
+            $('#login-error3').show();
+
+        }
+
     });
 
     $('.messageTextarea').keydown(function(event) {
