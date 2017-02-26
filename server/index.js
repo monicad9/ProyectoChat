@@ -58,6 +58,11 @@ io.sockets.on('connection' ,function(socket){
 	function actualizar_usuarios(){
 		io.sockets.emit('Usuarios', nombres_usuarios);
 	}
+ 	
+ 	socket.on('user_image', function (data) {
+        io.sockets.emit('user_image', {nombre:socket.nombre_usuario,msg:data});
+    });
+
 });
 
 

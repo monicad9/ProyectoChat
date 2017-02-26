@@ -126,4 +126,37 @@ $(function(){
         $('.arrow_box').append("<div class='connected'><span class='e'>" + data.nombre + " ha entrado en el chat</span></div>");
 
     })
+
+
+    $('#imagefile').on('change', function(e){
+        var file = e.originalEvent.target.files[0],
+            reader = new FileReader();
+
+        reader.onload = function(evt){
+
+            socket.emit('user_image', evt.target.result);
+        };
+
+        reader.readAsDataURL(file);  
+    });
+
+    socket.on('user_image', image);
+
+    function image (data) {
+
+        $('.arrow_box').append('<div class="texto"><div class="nick">' + data.nombre + "</div><div class='msg'><a target='_blank' href='" +  data.msg + "'><img id='imgsend' src='"  + data.msg + "'></a></div></div>");
+    }
+
 });
+
+
+
+
+
+
+
+
+
+
+
+
