@@ -299,3 +299,9 @@ p:hover{
 #login-error, #login-error2, #login-error3{
     text-align: center;
 }
+
+.estado{
+    word-wrap: break-word;
+    font-style: oblique;
+    text-align: center;
+}

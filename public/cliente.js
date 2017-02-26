@@ -51,9 +51,13 @@ $(function(){
                         $('#login-error').hide();
                         $('.login').hide();
                         $('#whatsapp').show();
+                        var estado = $('#estado').val()
 
                         var img= $('input:radio[name=av_select]:checked').val();
-                        $('.cabeceraPersonal').append("<img id='fotoPersonal' src='" + img + "'>" + $('#nombre_contacto').val()) 
+                        if (estado == ""){
+                            estado = 'Online'
+                        }
+                        $('.cabeceraPersonal').append("<img id='fotoPersonal' src='" + img + "'>" + $('#nombre_contacto').val() + "<div class='estado'>'" + estado + "'</div>") 
                     }
                     else{
                         $('#login-error').show();
@@ -114,12 +118,12 @@ $(function(){
     })
 
     socket.on('user_disconnect',function(data){
-        $('#messages').append("<div class='disconnected'><span class='e'> " + data.nombre + " ha abandonado el chat</span></div>");
+        $('.arrow_box').append("<div class='disconnected'><span class='e'> " + data.nombre + " ha abandonado el chat</span></div>");
 
     })
 
     socket.on('user_connected',function(data){
-        $('#messages').append("<div class='connected'><span class='e'>" + data.nombre + " ha entrado en el chat</span></div>");
+        $('.arrow_box').append("<div class='connected'><span class='e'>" + data.nombre + " ha entrado en el chat</span></div>");
 
     })
 });
