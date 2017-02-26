@@ -39,9 +39,9 @@ background-repeat: no-repeat;*/
 #fotoPersonal{
     max-width: 60px;
     max-height: 60px;
-    margin-right: 8px;
-    border: 1px solid black;
+    margin-right: 18px;
     border-radius: 30px;
+    margin-left: 6px;
 }
 
 #datos{
@@ -276,7 +276,8 @@ p:hover{
 }
 
 .cont_connected:hover{
-    border:1px solid orange;
+    background-color: #D3D3D3;
+    border:1px solid #D3D3D3;
     border-radius: 20px;
     cursor: pointer;
     box-shadow: 5px 5px 5px #DBDDDC;
